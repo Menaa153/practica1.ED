@@ -1,10 +1,10 @@
 
 
 class Fecha:
-    def __init__(self, dd, mm, aa):
+    def __init__(self, dd, mm, aaaa):
         self._dd = dd
         self._mm = mm
-        self._aa = aa
+        self._aaaa = aaaa
     
     
     def getDD(self):
@@ -18,10 +18,10 @@ class Fecha:
         self._mm = mm
     
     def getAA(self):
-        return self._aa
-    def setAA(self, aa):
-        self._aa = aa
+        return self._aaaa
+    def setAA(self, aaaa):
+        self._aaaa = aaaa
     
     
-    def to_string(self):
-        return f"dd: {self._dd}, mm: {self._mm}, aa: {self._aa}"
+    def __str__(self):
+        return f"dd: {self._dd}, mm: {self._mm}, aaaa: {self._aaaa}"

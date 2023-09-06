@@ -46,5 +46,6 @@ class Usuario:
     def setEmail(self, email):
         self._email = email
     
-    def toString(self):
-        return toString
+    def __str__(self):
+        return f"ID: {self._id}, Nombre: {self._nombre}, Fecha de Nacimiento: {self._fechaNac}, Ciudad de Nacimiento: {self._ciudadNac}, Dirección: {self._direccion}, Teléfono: {self._telefono}, Email: {self._email}"
+

@@ -23,5 +23,5 @@ class Direccion:
     def get_ciudad(self):
         return self._ciudad
     
-    def to_string(self):
+    def __str__(self):
         return f"Calle: {self._calle}, NoCalle: {self._noCalle}, Nomenclatura: {self._nomenclatura}, Barrio: {self._barrio}, Ciudad: {self._ciudad}"
