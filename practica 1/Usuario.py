@@ -1,5 +1,4 @@
 
-
 class Usuario:
     def __init__(self, id, nombre, fecha_nac, ciudad_nac, direccion, telefono, email):
         #Datos necesarios para identificar al usuario

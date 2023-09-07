@@ -1,5 +1,4 @@
 
-
 class Direccion:
     def __init__(self, calle, noCalle, nomenclatura, barrio, ciudad):
         self._calle = calle
