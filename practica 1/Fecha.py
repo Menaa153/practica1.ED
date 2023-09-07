@@ -24,4 +24,4 @@ class Fecha:
     
     
     def __str__(self):
-        return f"dd: {self._dd}, mm: {self._mm}, aaaa: {self._aaaa}"
+        return f"{self._dd}-{self._mm}-{self._aaaa}"

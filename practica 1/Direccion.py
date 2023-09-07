@@ -24,4 +24,4 @@ class Direccion:
         return self._ciudad
     
     def __str__(self):
-        return f"Calle: {self._calle}, NoCalle: {self._noCalle}, Nomenclatura: {self._nomenclatura}, Barrio: {self._barrio}, Ciudad: {self._ciudad}"
+        return f"{self._calle} {self._noCalle} {self._nomenclatura} {self._barrio} {self._ciudad}"

@@ -20,7 +20,7 @@ class RegistroUsuarios:
             
             # Itera a través de las filas del archivo CSV
             for row in csv_reader:
-                fila = row[0].split(';')  # Divide la fila usando ';' como separador
+                fila = row[0].split(',')  # Divide la fila usando ';' como separador
                 fila = [elemento.strip() for elemento in fila]  # Elimina espacios adicionales
                 usuario = Usuario(id=fila[0], nombre=fila[1], fecha_nac=fila[2], ciudad_nac=fila[3], direccion=fila[4], telefono=fila[5], email=fila[6])
 
@@ -78,45 +78,13 @@ class RegistroUsuarios:
             print("El registro está lleno, no se puede agregar más usuarios.")
         return False
     
-    def pedirDatosUsuario(self, Usuario):
-        # Solicita los datos del usuario al usuario
-        id = input("Ingrese el ID del usuario: ")
-        nombre = input("Ingrese el nombre del usuario: ")
-        ciudad_nac = input('Ingrese la ciudad donde nació: ')
-        
-        # Solicita datos de la fecha al usuario
-        dd = input("Ingrese el día (dd): ")
-        mm = input("Ingrese el mes (mm): ")
-        aa = input("Ingrese el año (aa): ")
-        
-        
-        # Crea una instancia de la clase Fecha con los datos ingresados por el usuario
-        fecha_usuario = Fecha(dd=dd, mm=mm, aa=aa)
-        
-        # Solicita datos de dirección al usuario
-        calle = input("Ingrese la calle: ")
-        noCalle = input("Ingrese el número de la calle: ")
-        nomenclatura = input("Ingrese la nomenclatura: ")
-        barrio = input("Ingrese el barrio: ")
-        ciudad = input("Ingrese la ciudad: ")
-        
-        
-        # Crea una instancia de la clase Direccion con los datos ingresados por el usuario
-        direccion_usuario = Direccion(calle=calle, noCalle=noCalle, nomenclatura=nomenclatura, barrio=barrio, ciudad=ciudad)
-        
-        # Solicita los otros datos del usuario al usuario
-        telefono = input("Ingrese el teléfono del usuario: ")
-        email = input("Ingrese el correo electrónico del usuario: ")
-        
-        # Crea una instancia de la clase Usuario utilizando los objetos ya obtenidos
-        return   Usuario(id=id, nombre=nombre, fecha_nac=fecha_usuario, ciudad_nac=ciudad_nac, direccion=direccion_usuario, telefono=telefono, email=email)
-    
-    
     def buscar_usuario(self, id):
         for i in self._usuarios:
             if i._id==id:
                 #print(i)
+                
                 return i
+                break
             else:
                 return None
         #return None
@@ -133,7 +101,23 @@ class RegistroUsuarios:
     
     
     
-    def guardar_en_archivo(self, archivo_nombre):
+    def guardar_archivo(self):
         with open(archivo_nombre, 'w') as archivo:
             for usuario in self.usuarios:
                 archivo.write(f"{usuario.id},{usuario.nombre},{usuario.fecha_nacimiento},{usuario.ciudad_nacimiento},{usuario.direccion},{usuario.telefono},{usuario.correo}\n")
+    
+    
+    
+    
+    def guardarDatos(self):
+        # Abre el archivo CSV en modo escritura
+        with open('practica 1/usuarios.csv', mode='w', newline='') as file:
+            # Crea un objeto CSV Writer
+            csv_writer = csv.writer(file)
+
+            # Escribe la fila de encabezado
+            csv_writer.writerow(["ID", "Nombre", "Fecha de Nacimiento", "Ciudad de Nacimiento", "Dirección", "Teléfono", "Email"])
+
+            # Escribe cada usuario en el archivo CSV
+            for usuario in self._usuarios:
+                csv_writer.writerow([usuario._id, usuario._nombre, usuario._fechaNac, usuario._ciudadNac, usuario._direccion, usuario._telefono, usuario._email])
